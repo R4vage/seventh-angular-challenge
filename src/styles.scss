@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body{
+  background-color: #e3e3e3;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(220, 248, 253);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(118, 118, 116)
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
