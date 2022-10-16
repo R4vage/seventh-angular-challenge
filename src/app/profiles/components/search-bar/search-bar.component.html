@@ -1,0 +1,14 @@
+<section class="search-profile">
+    <div class="search-profile__search">
+        <form id="search-profile__form" class="search-profile__form" #userForm="ngForm">
+            <img src="assets/imgs/search.svg" id="search-button" alt="Search Button" (click)="setUsers(name)">
+            <input type="text" id="search-profile__form__input" ngModel placeholder="Input a Github User" name="username" autocomplete="off" (ngModelChange)="inputChange($event)" [(ngModel)]="name">
+            <p class="search-reset" id="search-reset" *ngIf="users.length > 0" (click)="clearSearch()">X</p>
+        </form>
+    </div>
+    <div class="search-profile__results" *ngIf="users.length !== 0 || userNotFound" @fromTop>
+        <div class="search-profile__results__row" *ngIf="users.length === 0 && userNotFound">No results </div>
+        <div class="search-profile__results__row" *ngFor="let user of users"  (click)="changeCurrentUser(user)">{{user}}</div>
+    </div>
+</section>
+<app-warning-modal [warningMessage]="modalMessage" *ngIf="modalMessage.length !==0 "></app-warning-modal>

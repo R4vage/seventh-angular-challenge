@@ -1,0 +1,1 @@
+export type UserField = 'name' | 'lastName' | 'email' | 'password' | 'confirmPassword' | 'birthDate' | 'telephoneNumber' | 'personalSiteUrl' | 'aboutMe' | 'gender' | 'country' | 'state' | 'adress' | 'agree'

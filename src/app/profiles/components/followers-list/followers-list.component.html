@@ -1,0 +1,10 @@
+<h3>Followers</h3>
+<section>
+    <div class="display-profile__follower" *ngFor="let follower of followersArray">
+        <img [src]="follower.avatar_url" alt="User Image"/>
+        <h3>{{follower.login}}</h3>
+        <button><a [href]="follower?.html_url" target="_blank">Go To Profile</a></button>
+    </div>
+</section>
+<app-pagination *ngIf="followers > 10" [pages]="getNumberOfPages(followers)" (currentPageEmitter)="changeCurrentPage($event)" [currentPage]="currentPage"></app-pagination>
+<app-warning-modal [warningMessage]="modalMessage" *ngIf="modalMessage.length !==0 "></app-warning-modal>

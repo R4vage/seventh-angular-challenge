@@ -1,0 +1,105 @@
+@import '_variables.scss';
+
+:host{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    margin-bottom: auto;
+}
+.search-profile{
+    position: relative;
+    transition: all 200ms ease-in-out;
+    box-shadow: 5px 4px 1px 1px rgb(87, 86, 86);
+    margin-bottom: 1em;
+    background-color: rgb(87, 86, 86);
+}
+
+.search-reset{
+    font-weight: 700;
+    margin-inline:0.7em ;
+    padding: 0.2em;
+    cursor: pointer;
+    z-index: 2;
+    overflow-x: hidden;
+}
+
+.search-profile__search{
+    background-color: $clr-main-dark;
+    width: 320px;
+    position: relative;
+    padding: 0.2em;
+    z-index: 2;
+    box-shadow: 5px -1px 1px 1px rgb(64, 63, 63);
+}
+
+.search-profile__form{
+    display: flex;
+    align-items: center;
+    height: 2em;
+    background-color: white;
+    margin: 1em;
+    z-index: 2;
+    transition: all 200ms ease-in-out;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.search-profile__form img{
+    cursor: pointer;
+    border-right: 1px solid grey;
+}
+
+.search-profile__form input{
+    all: unset;
+    width: 90%;
+    border: none;
+    color: black;
+    margin-left: 0.5em;
+}
+
+.search-profile__results{
+    background-color: $clr-main-dark;
+    position: absolute;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    transition: margin-top 200ms ease-in-out;
+    z-index: 1;
+    box-shadow: 5px 5px 1px 1px rgb(64, 63, 63);
+    border-radius: 0 0 7px 7px;
+    padding-top: 1em;
+    overflow: hidden;
+}
+
+.search-profile__results__row{
+    display: flex;
+    justify-content: space-between;
+    background-color: $clr-main-dark;
+    padding-inline: 1em;
+    padding-block: 0.7em;
+    cursor: pointer;
+    color: $clr-white;
+    transition: all 200ms ease-in-out;
+}
+
+.search-profile__results__warning{
+    color: $clr-white;
+    background-color: $clr-main-dark;
+    text-align: center;
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+}
+
+.search-profile__results__row:hover{
+    background-color: antiquewhite;
+    color: $clr-black;
+    box-shadow: 6px 0px 0 0 white;
+    z-index: 4;
+}
+
+
+.search-profile__results__row button{
+    all: unset;
+}

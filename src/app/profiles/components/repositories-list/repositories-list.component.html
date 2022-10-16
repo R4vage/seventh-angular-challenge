@@ -1,0 +1,29 @@
+
+<section class="display-profile" id="display-profile">
+    <h3>Repositories:</h3>
+    <div class="table-wrapper">
+        <table class="repositories-list" id="repositories-table">
+            <thead class="repositories-list__head">
+                <tr class="repositories-list__row">
+                    <th>Name </th>
+                    <th>Stars</th>
+                    <th>Forks </th>
+                    <th>Watchers</th>
+                    <th>Link </th>
+                </tr>
+            </thead>
+            <tbody id="repositories-list__body">
+                <tr *ngFor="let repository of repositories" class="repositories-list__row" >
+                    <td>{{repository.name}}</td>
+                    <td>{{repository.stargazers_count}}</td>
+                    <td>{{repository.forks_count}}</td>
+                    <td>{{repository.watchers_count}}</td>
+                    <td class="repository__link"><a [href]="repository.svn_url" target="_blank" class="user_link">{{repository.svn_url}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination  [pages]="getNumberOfPages(totalRepositories)" [currentPage]="currentPage" (currentPageEmitter)="changeCurrentPage($event)"></app-pagination>
+</section>
+
+<app-warning-modal [warningMessage]="modalMessage" *ngIf="modalMessage.length !==0 "></app-warning-modal>

@@ -1,0 +1,16 @@
+@import "_variables";
+
+.modal{
+   position: fixed;
+   top: 3.5rem;
+   right: 0;
+   background-color: darkgoldenrod;
+   color: $clr-black; 
+   box-shadow: -2px 2px 5px grey;
+   color: $clr-white;
+   border-radius: 5px 0 0 5px;
+   padding-inline: 0.6em;
+   padding-block: 0.4em;
+   font-size: large;
+   z-index: 22;
+}

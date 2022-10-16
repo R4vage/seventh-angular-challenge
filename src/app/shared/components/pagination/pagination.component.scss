@@ -1,0 +1,61 @@
+@import "_variables";
+
+:host{
+    align-self: center;
+}
+
+.repositories-pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: fit-content;
+    align-self: center;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: center;
+    background-color: $clr-main-light;
+    padding: 0;
+}
+
+.repositories-pages__arrows{
+    background-color: $clr-main-light;
+    padding: 0.5em;
+}
+
+.repositories-pages__dots{
+    background-color: $clr-main-light;
+    cursor: default;
+    padding: 0.4em;
+}
+
+.repositories-pages__page{
+    background-color: $clr-main-lighter;
+    padding-block: 0.5em;
+    padding-inline: 0.7em;  
+    color: $clr-black;
+}
+
+
+.repositories-pages__current{
+    background-color: $clr-main-dark;
+    cursor: default;
+    padding-block: 0.5em;
+    padding-inline: 0.7em;  
+    color: $clr-white;
+}
+
+
+.repositories-pages__arrows, .repositories-pages__page{
+    cursor: pointer;
+}
+
+.repositories-pages__arrows:hover, .repositories-pages__page:hover{
+    background-color: $clr-header-github;
+    color: $clr-white;
+    transform: scale(1.2);
+}
+
+.repositories-pages__current:hover{
+    transform: unset!important;
+}

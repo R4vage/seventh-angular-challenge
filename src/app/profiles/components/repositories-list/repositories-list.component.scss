@@ -1,0 +1,168 @@
+@import "_variables";
+
+:host{
+    align-self: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 0.5em;
+}
+
+.display-profile{
+    background-color: $clr-main;
+    color: white;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;   
+}
+.table-wrapper{
+    overflow-x: scroll;
+    
+    position: relative;
+}
+
+.repositories-list{
+    padding: 1em;
+    width: 100%;
+    background-color: $clr-header-github;
+    border-radius: 10px;
+    border: 1px solid $clr-main-light;
+    
+}
+
+.repositories-list__head{
+    text-align: left;
+    white-space: nowrap;
+    
+}
+
+.repositories-list__row{
+    column-gap: auto;
+    
+    
+}
+.repositories-list__row td{
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 1em;
+    padding-block: 0.2em;
+}
+
+.repositories-list__row th{
+    padding-bottom: 0.5em;
+}
+
+.repositories-list__row td, .repositories-list__row th{
+    padding-left: 1em;
+}
+
+.repositories-list__row th:first-child {
+    padding-left: 0;
+}
+
+.repositories-list__row td:first-child {
+    width: max-content;
+    overflow: visible;
+    max-width: unset;
+    padding-left: 0;
+}
+.repositories-list__row td:last-child, .repositories-list__row th:last-child{
+    max-width: unset;
+    text-align: right;
+}
+
+.repositories-list__row td:last-child:hover{
+    cursor: pointer;
+    color: aqua;
+}
+
+.repositories-pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    width: fit-content;
+    align-self: center;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: center;
+    background-color: $clr-main-light;
+    padding: 0;
+}
+
+.repositories-pages__arrows{
+    background-color: $clr-main-light;
+    padding: 0.5em;
+}
+
+.repositories-pages__dots{
+    background-color: $clr-main-light;
+    cursor: default;
+    padding: 0.4em;
+}
+
+.repositories-pages__page{
+    background-color: $clr-main-light;
+    padding-block: 0.5em;
+    padding-inline: 0.7em;
+}
+
+.repositories-pages__page:nth-child(even){
+    background-color: $clr-main-lighter;
+}
+
+.repositories-pages__current{
+    background-color: $clr-main-dark!important;
+    cursor: default!important;
+}
+
+
+.repositories-pages__arrows, .repositories-pages__page{
+    cursor: pointer;
+}
+
+.repositories-pages__arrows:hover, .repositories-pages__page:hover{
+    background-color: $clr-header-github;
+    transform: scale(1.2);
+}
+
+.repositories-pages__current:hover{
+    transform: unset;
+}
+
+.user_link{
+    color: $clr-white;
+}
+
+.user_link:hover{
+    cursor: pointer;
+    color: aqua;
+}
+
+
+
+@media (min-width:769px){
+
+    .display-profile{
+        width: 85%;
+    }
+}
+
+@media (min-width:1125px){
+
+    .table-wrapper{
+        overflow-x: unset;
+    }
+
+    .repositories-list__row td:last-child, .repositories-list__row th:last-child{
+        max-width: 14em;
+        text-align: right;
+    }
+}

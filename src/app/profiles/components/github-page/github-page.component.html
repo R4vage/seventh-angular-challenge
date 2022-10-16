@@ -1,0 +1,21 @@
+<section class="display-profile">
+    <div class="display-profile__title">
+        <h1 class="display-profile__name" id="display-profile__name">{{currentUser?.login}}</h1>
+    </div>
+
+    <div class="display-profile__main">
+        <img [src]="currentUser?.avatar_url" id="display-profile__img" alt="Github User Image">
+        
+        <div class="display-profile__form" id="display-profile__form">
+            <h1>User Info</h1>
+            <p>Followers:<span>{{currentUser?.followers}}</span></p>
+            <p>Following<span>{{currentUser?.following}}</span></p>
+            <p>Company:<span>{{currentUser?.company ? currentUser?.company : "No company registered"}}</span></p>
+            <p>Website:<span>{{currentUser?.blog ? currentUser?.blog : "No website found"}}</span></p>
+            <p>Location:<span>{{currentUser?.location ? currentUser?.location : "No location registered"}}</span></p>
+            <p>Member since:<span>{{currentUser?.created_at | date}}</span></p>
+            <p>Number of Stars:<span>{{totalStars}}</span></p>
+            <p for="link-to-profile" > Github Link:<a class="display-profile__form__link" target="_blank" [href]="currentUser?.url">{{currentUser?.url}}</a></p>      
+        </div>
+    </div>
+</section>
