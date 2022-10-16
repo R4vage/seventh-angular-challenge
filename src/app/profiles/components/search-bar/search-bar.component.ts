@@ -1,6 +1,6 @@
 import { Animations } from './../../../shared/animations/animations';
 import { RestService } from './../../rest.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,13 +12,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SearchBarComponent {
   name = ""
+  timer = 0
   modalMessage = ""
   users: string[] = []
   userNotFound = false
   @Output() currentUserEmitter = new EventEmitter<string>();
 
   constructor(private restService: RestService) { 
-
   }
 
   setUsers (userName:string) {
@@ -47,23 +47,23 @@ export class SearchBarComponent {
   }
 
   inputChange (event:string) {
-    let timer
-    const startTimer = () => {
-      timer = setTimeout(
+    clearTimeout(this.timer)
+    this.startTimer(this.timer, event)
+  };
+
+  startTimer (timer: any, event:string) {
+    timer = setTimeout(
         () => {
           this.setUsers(event)
         }
-      ,700)
-    }
-    clearTimeout(timer)
-    startTimer()
+    ,1200)
   };
 
   clearSearch() {
     this.users = []
     this.name = ""
   }
-
+  
   displayError (message: string) {
     this.modalMessage = message
     setTimeout(

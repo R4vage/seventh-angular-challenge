@@ -7,7 +7,7 @@
         </form>
     </div>
     <div class="search-profile__results" *ngIf="users.length !== 0 || userNotFound" @fromTop>
-        <div class="search-profile__results__row" *ngIf="users.length === 0 && userNotFound">No results </div>
+        <div class="search-profile__results__warning" *ngIf="users.length === 0 && userNotFound">No results </div>
         <div class="search-profile__results__row" *ngFor="let user of users"  (click)="changeCurrentUser(user)">{{user}}</div>
     </div>
 </section>

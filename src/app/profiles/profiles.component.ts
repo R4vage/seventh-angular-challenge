@@ -1,7 +1,7 @@
 import { Animations } from './../shared/animations/animations';
 import { User, Repository } from './../models/response.models';
 import { RestService } from './rest.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profiles',
@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
     RestService
   ]
 })
-export class ProfilesComponent implements OnInit {
+export class ProfilesComponent {
   currentUser: User | null = null
   repositories = 0
   userName: string = ""
@@ -23,8 +23,6 @@ export class ProfilesComponent implements OnInit {
   totalStars = 0
   constructor(private restService: RestService) { }
 
-  ngOnInit(): void {
-    }
 
 
   changeCurrentUser(event:string) {

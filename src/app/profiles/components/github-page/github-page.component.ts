@@ -1,6 +1,6 @@
 import { User } from './../../../models/response.models';
 import { RestService } from './../../rest.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-github-page',
