@@ -113,6 +113,7 @@ export class UserFormComponent implements OnInit{
 
   onSubmit(){
     this.modalOpened = true
+    console.log(this.userForm.value)
   }
 
   getField (field:UserField) {
