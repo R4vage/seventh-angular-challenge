@@ -28,10 +28,8 @@ export class UserFormComponent implements OnInit{
       next: (response) => this.countries = response.data,
       error: (error) => console.log(error)
     })
-    
   }
   
-
   userForm = new FormGroup ({
     name : new FormControl('', [
       Validators.required,
