@@ -1,3 +1,428 @@
 <app-navbar></app-navbar>
-<p>user-form works!</p>
+<form class="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <section>
+    <label for="name"
+      >Name:
+      <input
+        class="user-form__name textinput"
+        type="text"
+        name="name"
+        id="name"
+        maxlength="15"
+        formControlName="name"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('name')?.valid || !getField('name')?.touched"
+    >
+      <p [hidden]="!getField('name')?.errors?.['required']">
+        This field is required
+      </p>
+      <p
+        [hidden]="(!getField('name')?.errors?.['minlength'] && !getField('name')?.errors?.['maxlength'])"
+      >
+        Must have between 4 and 14 characters
+      </p>
+      <p [hidden]="!getField('name')?.errors?.['pattern']">
+        Only alphabetical characters are accepted
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="lastName"
+      >Last Name:
+      <input
+        class="user-form__last-name textinput"
+        type="text"
+        name="lastName"
+        id="lastName"
+        maxlength="15"
+        autocomplete="off"
+        formControlName="lastName"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('lastName')?.valid || !getField('lastName')?.touched"
+    >
+      <p [hidden]="!getField('lastName')?.errors?.['required']">
+        This field is required
+      </p>
+      <p
+        [hidden]="(!getField('lastName')?.errors?.['minlength'] && !getField('lastName')?.errors?.['maxlength'])"
+      >
+        Must have between 4 and 14 characters
+      </p>
+      <p [hidden]="!getField('lastName')?.errors?.['pattern']">
+        Only alphabetical characters are accepted
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="email"
+      >E-mail:
+      <input
+        class="textinput"
+        type="email"
+        name="email"
+        id="email"
+        email
+        autocomplete="off"
+        maxlength="50"
+        formControlName="email"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('email')?.valid || !getField('email')?.touched"
+    >
+      <p [hidden]="!getField('email')?.errors?.['required']">
+        This field is required
+      </p>
+      <p
+        [hidden]="!getField('email')?.errors?.['email'] && !getField('email')?.errors?.['pattern']"
+      >
+        Insert a valid email
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="password"
+      >Password:
+      <input
+        class="textinput"
+        type="password"
+        name="password"
+        id="password"
+        maxlength="40"
+        formControlName="password"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('password')?.valid || !getField('password')?.touched"
+    >
+      <p [hidden]="!getField('password')?.errors?.['required']">
+        This field is required
+      </p>
+      <p [hidden]="!getField('password')?.errors?.['minlength']">
+        Must have more than 8 characters
+      </p>
+      <p [hidden]="!getField('password')?.errors?.['pattern']">
+        The password must have at least a number, a letter and a special
+        character
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="confirmPassword"
+      >Confirm Password:
+      <input
+        class="textinput"
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        pattern="{{ userForm.value.password }}"
+        formControlName="confirmPassword"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="
+        getField('confirmPassword')?.valid ||
+        !getField('confirmPassword')?.touched
+      "
+    >
+      <p [hidden]="!getField('confirmPassword')?.errors?.['required']">
+        This field is required
+      </p>
+      <p [hidden]="!getField('confirmPassword')?.errors?.['pattern']">
+        The passwords must coincide
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="birthDate"
+      >Birth Date:
+      <input
+        name="birthDate"
+        type="date"
+        id="birthDate"
+        max="{{ getTodayString() }}"
+        formControlName="birthDate"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('birthDate')?.valid || !getField('birthDate')?.touched"
+    >
+      <p [hidden]="!getField('birthDate')?.errors?.['required']">
+        This field is required
+      </p>
+      <p [hidden]="!getField('birthDate')?.errors?.['greaterThanToday']">
+        You can't have been born in the future!
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="telephoneNumber"
+      >Telephone Number:
+      <input
+        class="textinput"
+        name="telephoneNumber"
+        type="text"
+        id="telephoneNumber"
+        required
+        maxlength="30"
+        autocomplete="off"
+        formControlName="telephoneNumber"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="
+        getField('telephoneNumber')?.valid ||
+        !getField('telephoneNumber')?.touched
+      "
+    >
+      <p [hidden]="!getField('telephoneNumber')?.errors?.['required']">
+        This field is required
+      </p>
+      <p
+        [hidden]="(!getField('telephoneNumber')?.errors?.['minlength'] && !getField('telephoneNumber')?.errors?.['maxlength'])"
+      >
+        Must have between 5 and 30 numbers
+      </p>
+      <p [hidden]="!getField('telephoneNumber')?.errors?.['pattern']">
+        Only numbers are allowed
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="personalSiteUrl"
+      >Personal Website:
+      <input
+        class="textinput"
+        name="personalSiteUrl"
+        type="url"
+        id="personalSiteUrl"
+        maxlength="50"
+        autocomplete="off"
+        formControlName="personalSiteUrl"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="
+        getField('personalSiteUrl')?.valid ||
+        !getField('personalSiteUrl')?.touched
+      "
+    >
+      <p
+        [hidden]="(!getField('personalSiteUrl')?.errors?.['minlength'] && !getField('personalSiteUrl')?.errors?.['maxlength'])"
+      >
+        Must have between 5 and 50 characters
+      </p>
+      <p [hidden]="!getField('personalSiteUrl')?.errors?.['pattern']">
+        Insert a valid url
+      </p>
+    </div>
+  </section>
+
+  <section class="section__about-me">
+    <label for="aboutMe" class="about-me"
+      >About Me:
+      <textarea
+        name="aboutMe"
+        type="text"
+        id="aboutMe"
+        maxlength="80"
+        formControlName="aboutMe"
+      ></textarea>
+    </label>
+  </section>
+
+  <section>
+    <label
+      >Gender:
+      <div class="radio-buttons">
+        <label for="genderMale"
+          >Male:<input
+            name="gender"
+            type="radio"
+            value="male"
+            id="genderMale"
+            formControlName="gender"
+        /></label>
+        <label for="genderFemale"
+          >Female:<input
+            name="gender"
+            type="radio"
+            value="female"
+            id="genderFemale"
+            formControlName="gender"
+        /></label>
+        <label for="genderOther"
+          >Other:<input
+            name="gender"
+            type="radio"
+            value="other"
+            id="genderOther"
+            formControlName="gender"
+        /></label>
+      </div>
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('gender')?.valid || !getField('gender')?.touched"
+    >
+      <p [hidden]="!getField('gender')?.errors?.['required']">
+        Select an option
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="country" class="user-form__country"
+      >Country:
+      <select
+        name="country"
+        required
+        formControlName="country"
+        (change)="changeStates()"
+      >
+        <option *ngFor="let country of countries" value="{{ country.name }}">
+          {{ country.name }}
+        </option>
+      </select>
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('country')?.valid || !getField('country')?.touched"
+    >
+      <p [hidden]="!getField('country')?.errors?.['required']">
+        Select a country
+      </p>
+    </div>
+  </section>
+
+  <section *ngIf="states.length !== 0" @fadeIn>
+    <label for="state" class="user-form__state"
+      >State:
+      <select name="state" required formControlName="state">
+        <option *ngFor="let place of states" value="{{ place.name }}">
+          {{ place.name }}
+        </option>
+      </select>
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('state')?.valid || !getField('state')?.touched"
+    >
+      <p [hidden]="!getField('state')?.errors?.['required']">Select a state</p>
+    </div>
+  </section>
+
+  <section *ngIf="getField('state')?.valid" @fadeIn>
+    <label for="adress" class="user-form__adress"
+      >Adress:
+      <input
+        class="textinput"
+        name="address"
+        type="text"
+        maxlength="50"
+        id="adress"
+        autocomplete="off"
+        formControlName="adress"
+      />
+    </label>
+    <div
+      class="errors"
+      [hidden]="getField('adress')?.valid || !getField('adress')?.touched"
+    >
+      <p [hidden]="!getField('adress')?.errors?.['required']">
+        Fill your adress
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <label for="agree"
+      >Do you agree with our terms and conditions?:
+      <input name="agree" type="checkbox" id="agree" formControlName="agree" />
+    </label>
+    <div
+      class="errors"
+      *ngIf="!getField('agree')?.value && !getField('agree')?.pristine"
+    >
+      <p *ngIf="!getField('agree')?.value">
+        You must agree in order to proceed
+      </p>
+    </div>
+  </section>
+  <input class="user-form__submit" type="submit" value="Accept" [disabled]="!userForm.valid"/>
+</form>
+
+<div class="modal__container" *ngIf="modalOpened" @fromLeftToRight>
+  <div class="modal">
+      <div>
+        <p>Name:</p>
+        <p>{{ getField("name")?.value }}</p>
+      </div>
+      <div>
+        <p>Last Name:</p>
+        <p>{{ getField("lastName")?.value }}</p>
+      </div>
+      <div>
+        <p>E-mail:</p>
+        <p>{{ getField("email")?.value }}</p>
+      </div>
+      <div>
+        <p>Password:</p>
+        <p>{{ getField("password")?.value }}</p>
+      </div>
+      <div>
+        <p>Birth Date:</p>
+        <p>{{ getField("birthDate")?.value }}</p>
+      </div>
+      <div>
+        <p>Telephone Number:</p>
+        <p>{{ getField("telephoneNumber")?.value }}</p>
+      </div>
+      <div>
+        <p>Personal Website:</p>
+        <p>{{ getField("personalSiteUrl")?.value }}</p>
+      </div>
+      <div>
+        <p>About Me:</p>
+        <p>{{ getField("aboutMe")?.value }}</p>
+      </div>
+      <div>
+        <p>Gender:</p>
+        <p>{{ getField("gender")?.value }}</p>
+      </div>
+      <div>
+        <p>Country:</p>
+        <p>{{ getField("country")?.value }}</p>
+      </div>
+      <div>
+        <p>State:</p>
+        <p>{{ getField("state")?.value }}</p>
+      </div>
+      <div>
+        <p>Adress:</p>
+        <p>{{ getField("adress")?.value }}</p>
+      </div>
+      <button (click)="closeModal()">Accept</button>
+    </div>
+</div>
+
 <app-footer></app-footer>

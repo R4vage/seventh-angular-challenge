@@ -1,3 +1,18 @@
 <app-navbar></app-navbar>
-<p>profiles works!</p>
+<app-search-bar (currentUserEmitter)="changeCurrentUser($event)"></app-search-bar>
+<app-github-page [currentUser]="currentUser" *ngIf="currentUser" @fromLeftToRight [totalStars]="totalStars"></app-github-page>
+<app-repositories-list 
+    *ngIf="repositories > 0 && currentUser"
+    [userName]="userName"
+    [totalRepositories]="repositories"
+    @fromLeftToRight
+></app-repositories-list>
+<app-followers-list 
+    *ngIf="followers > 0 && currentUser" 
+    [followers]="followers" 
+    [userName]="userName" 
+    @fromLeftToRight
+></app-followers-list>
 <app-footer></app-footer>
+<app-spinner></app-spinner>
+<app-warning-modal [warningMessage]="modalMessage" *ngIf="modalMessage.length !==0 "></app-warning-modal>

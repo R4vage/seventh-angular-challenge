@@ -3,13 +3,14 @@
     width: 100%;
     bottom: 0;
     padding: 1em;
-    justify-self: bottom;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1em;
     color: white;
     font-size: smaller;
+    margin-top: auto;
+    bottom: 0;
     img {
         width: 3em;
         cursor: pointer;

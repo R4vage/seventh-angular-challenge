@@ -1,6 +1,210 @@
 :host{
-    min-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  align-self: center;
+  gap: 1em;
+  width: 30em;
+  padding: 2em;
+  margin-block: 0.7em;
+  background-color: white;
+  border-radius: 6px 15px 6px 15px;
+  box-shadow: 2px 2px 5px grey;
+  section{
+    width: 100%;
     display: flex;
     flex-direction: column;
+    label{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .textinput{
+          all: unset;
+          cursor: text;
+          box-shadow: inset 0px 2px 6px 2px rgba(163, 163, 163, 0.748);
+          padding-inline: 0.2em;
+        }
+
+        .textinput:focus{
+          border-bottom: 1px solid grey;
+        }
+    }
+    .errors{
+      font-size: small;
+      margin: 0;
+      align-self: flex-end;
+      color: rgb(250, 87, 32);
+      p{
+        text-align: right;
+      }
+    }
+  }
+}
+
+.radio-buttons{
+display: flex;
+gap: 1em;
+
+label{
+  display: flex;
+  gap: 0.9em;
+}
+}
+
+.user-form__country{
+z-index: 2;
+}
+
+.user-form__city{
+opacity: 1;
+margin-top: 0;
+transition: all 200ms ease-in-out;
+z-index: 1;
+}
+
+.user-form__city, .user-form__country{
+max-width: 100%;
+
+select{
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 13em;
+  option{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 6em;
+  }
+}
+}
+
+.section__about-me{
+label{
+  textarea{
+    cursor: text;
+    width: 90%;
+    box-shadow: inset 0px 2px 6px 2px rgba(163, 163, 163, 0.748);
+    padding-inline: 0.2em;
+    overflow-y: auto;
+    resize: none
+  }
+}
+}
+
+.user-form__adress{
+opacity: 1;
+margin-top: 0;
+transition: all 200ms ease-in-out;
+z-index: 0;
+}
+
+.hidden{
+opacity: 0;
+margin-top: -50px;
+}
+
+.user-form__submit{
+cursor: pointer;
+padding-block: 0.4em;
+padding-inline:0.6em;
+border-radius: 2px;
+text-transform: uppercase;
+letter-spacing: 1px;
+border: 2px solid grey;
+transition: all 120ms ease-in-out;
+}
+
+
+
+.user-form__submit:hover {
+transform: scale(1.1);
+box-shadow: 1px 1px 3px grey;
+}
+
+select{
+border-radius: 2px;
+border: 2px solid rgb(152, 150, 150);
+}
+
+.modal{
+
+position: absolute;
+background-color: white;
+border-radius: 15px;
+padding: 1em; 
+width: 50%;
+height: 50%;
+min-width: 17em;
+display: flex;
+flex-direction: column;
+box-shadow: 2px 2px 5px grey;
+justify-content: space-around;
+
+button{
+  width: 6em;
+  align-self: center;
+  text-transform: uppercase;
+  padding-block: 0.3em;
+  padding-inline: 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: grey;
+  color: white;
+}
+
+button:hover{
+  background-color: wheat;
+  transform: scale(1.05);
+  box-shadow: 2px 2px 5px black;
+  color: black;
+}
+}
+
+.modal__container{
+position: fixed;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+background-color: rgba(113, 113, 113, 0.468);
+z-index: 4;
+opacity: 1;
+transform: translateX(0);
+transition: all 200ms ease-in-out;
+}
+
+.modal__closed{
+opacity: 0;
+transform: translateX(200vw);
+}
+
+.ng-invalid {
+  .user-form__submit{
+    color: grey;
+    cursor:not-allowed!important;
+  }
+
+  .user-form__submit:hover{
+    transform: unset!important;
+    box-shadow: unset!important;
+    }
+}
+
+.modal{
+  
+  div{
+    width: 100%;
+    display: flex;
     justify-content: space-between;
   }
+}
